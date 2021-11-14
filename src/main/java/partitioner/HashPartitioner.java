@@ -9,11 +9,11 @@ import util.Seed;
 
 public class HashPartitioner<K> implements Partitioner<K>{
     private HashFunction[] hash;
-    int currentTargetTaskNum;
-    int instanceNum;
+    private int currentTargetTaskNum;
+    private int instanceNum;
     private Seed seeds;
     private  double[] targetTaskStats;
-    int count;
+    private int count;
     @Override
     public int partition(K key, int numPartitions) {
         if (currentTargetTaskNum != numPartitions) {

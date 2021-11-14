@@ -19,15 +19,13 @@ public class DChoicePartitioner implements Partitioner {
     private HashFunction h1 = Hashing.murmur3_128(13);
     private HashFunction h2 = Hashing.murmur3_128(17);
     private HashFunction[] hash;
-    StreamSummary<String> streamSummary;
-    int instanceNum;
-    Long totalItems;
-    //private SEED seed;
+    private StreamSummary<String> streamSummary;
+    private int instanceNum;
+    private Long totalItems;
     private Seed seeds;
     //int tmpd;
 
-    //下游节点任务数，初始为0
-    int currentTargetTaskNum = 0;
+    private int currentTargetTaskNum = 0;
     @Override
     public int partition(Object key, int numPartitions) {
         if (currentTargetTaskNum != numPartitions){
@@ -62,7 +60,6 @@ public class DChoicePartitioner implements Partitioner {
         else
         {
             streamSummary.offer(str);
-            //float probability = 2/(float)(this.targetTasks.size()*10);
             float probability = 2/(float)(currentTargetTaskNum*10);
             double epsilon = 0.0001;
             int Choice =2;
@@ -100,16 +97,6 @@ public class DChoicePartitioner implements Partitioner {
                 if (totalItems < 1000){
                     Choice = 2;
                 }
-                    /*
-                    if (Choice != tmpd){
-                        tmpd = Choice;
-                        System.out.println("pTope:"+pTop);
-                        System.out.println("Choice: "+tmpd);
-                        System.out.println("d:"+d);
-                        System.out.println("serverNo:"+this.serversNo);
-                        System.out.println("totalItems:"+this.totalItems);
-                    }*/
-
                 //Hash the key accordingly
                 int counter = 0;
                 int[] choice;
@@ -146,7 +133,7 @@ public class DChoicePartitioner implements Partitioner {
         }
         return returnId;
     }
-    int selectMinChoice(long loadVector[], int choice[]) {
+    public int selectMinChoice(long loadVector[], int choice[]) {
         int index = choice[0];
         for(int i = 0; i< choice.length; i++) {
             if (loadVector[choice[i]]<loadVector[index])

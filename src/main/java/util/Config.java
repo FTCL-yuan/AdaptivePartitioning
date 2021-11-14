@@ -6,11 +6,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Config {
-    //public static String FEEDBACK_SERVER_HOST;
-    //public static int FEEDBACK_SERVER_PORT;
-    //public static String STATEFUL;
-    //public static String STATELESS;
-    //public static int WINDOW_SIZE;
     public static String METRICS_PATH;
     public static String KAFKA_TOPIC;
     public static String KAFKA_OFFSET;
@@ -29,8 +24,6 @@ public class Config {
     public static Integer REDUCE_PARALLELISM;
     public static String PARTITIONING_METHOD;
     public static Integer CHOICE_NUMBER;
-    //public static String CONTROLLER_SERVER;
-    //public static int CONTROLLER_SOCKET;
     static {
         String appProperties;
         if (System.getProperty("os.name").contains("Win"))
@@ -41,11 +34,6 @@ public class Config {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(file));
-            //FEEDBACK_SERVER_HOST = properties.getProperty("feedback.server.host");
-            //FEEDBACK_SERVER_PORT = Integer.parseInt(properties.getProperty("feedback.server.port"));
-            //STATEFUL = properties.getProperty("stateful");
-            //STATELESS = properties.getProperty("stateless");
-            //WINDOW_SIZE = Integer.parseInt(properties.getProperty("window_size"));
             METRICS_PATH = properties.getProperty("metrics.path");
             KAFKA_TOPIC = properties.getProperty("kafka.topic");
             KAFKA_OFFSET = properties.getProperty("kafka.offset");
@@ -62,15 +50,7 @@ public class Config {
             REDUCE_PARALLELISM = Integer.parseInt(properties.getProperty("reduce.parallelism"));
             PARTITIONING_METHOD = properties.getProperty("partitioning.method");
             CHOICE_NUMBER = Integer.parseInt(properties.getProperty("choice.number"));
-
-            //CONTROLLER_SERVER = properties.getProperty("controller.server");
-            //CONTROLLER_SOCKET = Integer.parseInt(properties.getProperty("controller.socket"));
         } catch (IOException e) {
-            //FEEDBACK_SERVER_HOST="192.168.225.222";
-            //FEEDBACK_SERVER_PORT = 10086;
-            //STATEFUL = "kg";
-            //STATELESS = "sh";
-            //WINDOW_SIZE=10000;
             if (System.getProperty("os.name").contains("Win"))
                 METRICS_PATH = "D:\\flink\\flink\\metric";
             else
@@ -89,8 +69,6 @@ public class Config {
             REDUCE_PARALLELISM = 1;
             PARTITIONING_METHOD = "AP";
             CHOICE_NUMBER = 5;
-            //CONTROLLER_SERVER = "192.168.226.253";
-            //CONTROLLER_SOCKET = 2333;
             e.printStackTrace();
         }
     }

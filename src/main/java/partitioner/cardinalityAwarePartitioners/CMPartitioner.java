@@ -14,10 +14,10 @@ public class CMPartitioner<K> implements Partitioner<K> {
     private HashFunction[] hash;
     private Seed seeds;
     transient HLL[] hlls;
-    int instanceNum = 0;
+    private int instanceNum = 0;
 
 
-    long countWindow,timeWindow,clearCount,cleanTime;
+    private long countWindow,timeWindow,clearCount,cleanTime;
     public CMPartitioner(int choiceNumber){
         this.choiceNumber = choiceNumber;
     }

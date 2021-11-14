@@ -18,12 +18,12 @@ public class WChoicePartitioner implements Partitioner {
     private  long[] targetTaskStats;
     private HashFunction h1 = Hashing.murmur3_128(13);
     private HashFunction h2 = Hashing.murmur3_128(17);
-    StreamSummary<String> streamSummary;
+    private StreamSummary<String> streamSummary;
 
 
-    long totalItems;
+    private long totalItems;
 
-    int currentTargetTaskNum = 0;
+    private int currentTargetTaskNum = 0;
     @Override
     public int partition(Object key, int numPartitions) {
         if (currentTargetTaskNum != numPartitions){

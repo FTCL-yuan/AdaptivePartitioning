@@ -20,23 +20,13 @@ public class DistributionAwarePartitioner<K> implements Partitioner<K> {
     private float delta;
     private final double alpha = 0.5;
     private long totalCount = 0;
-    int instanceNum = 0;
-//    int serversNo;
-    double lnInstanceNum;
-    long totalItems;
-    long usedSize;
-
-    int windowNum;
-
-    int capacity;
-
-    Long windowSize;
-
-    long balancedCount;
-
-    double epsilonFactor;
-
-    int coDomain;
+    private int instanceNum = 0;
+    private long usedSize;
+    private int windowNum;
+    private int capacity;
+    private Long windowSize;
+    private double epsilonFactor;
+    private int coDomain;
     @Override
     public int partition(K key, int numPartitions) {
         int target = 0;
@@ -54,17 +44,14 @@ public class DistributionAwarePartitioner<K> implements Partitioner<K> {
             instanceNum = numPartitions;
             workerLoads = new long[numPartitions];
 //            serversNo = currentTargetTaskNum;
-            lnInstanceNum = FastMath.ceil(FastMath.log(instanceNum));
             epsilonFactor = 32.0;
             usedSize = (long) (10 * instanceNum*epsilonFactor);
 
             //usedSize = 10000L;
-            //windowNum = Integer.max(3,(int)lnServersNo);
             windowNum = 3;
             capacity = (int) (instanceNum * 100);
             delta = 1.0f/(instanceNum*100);
             windowSize = usedSize * (windowNum - 1);
-            balancedCount = windowSize / instanceNum;
             coDomain = (int) Math.ceil(epsilonFactor*instanceNum);
             timeSlidingWindowStreamSummary = new TimeSlidingWindowStreamSummary<>(windowNum, windowSize, capacity, coDomain);
         }
@@ -142,7 +129,6 @@ public class DistributionAwarePartitioner<K> implements Partitioner<K> {
     }
     private boolean isFrequent(K key,float probability){
         HashMap<K,Long> highFreqList = timeSlidingWindowStreamSummary.getTopK(probability);
-        //System.out.println(highFreqList);
         if (highFreqList.containsKey(key)){
             return true;
         }else

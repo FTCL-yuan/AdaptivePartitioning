@@ -14,7 +14,7 @@ public class cAMPartitioner <K> implements Partitioner<K> {
     private HashFunction[] hash;
     private Seed seeds;
     transient HLL[] hlls;
-    int instanceNum = 0;
+    private int instanceNum = 0;
 
 
     long countWindow,timeWindow,clearCount,cleanTime;
