@@ -1,4 +1,5 @@
 package util;
+
 public class Seed {
     public int SEEDS[];
     int currentPrime = 2;

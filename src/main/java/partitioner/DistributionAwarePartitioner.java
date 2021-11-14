@@ -69,7 +69,6 @@ public class DistributionAwarePartitioner<K> implements Partitioner<K> {
         boolean frequentFlag = isFrequent(key,delta);
 
         if(!frequentFlag){
-            //target = (int)(Math.abs(hashFunction.hashBytes(key.toString().getBytes()).asLong())%numPartitions);
            target =  FastMath.abs(hashFunction.hashBytes(raw).asInt() % instanceNum);
         }else{
             double[] score = calScore(key, numPartitions);

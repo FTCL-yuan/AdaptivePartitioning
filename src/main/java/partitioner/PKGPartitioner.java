@@ -43,7 +43,6 @@ public class PKGPartitioner implements Partitioner {
             } else {
                 out.putInt(key.hashCode());
             }
-
         } else {
             out.putInt(0);
         }

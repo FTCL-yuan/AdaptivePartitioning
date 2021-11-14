@@ -41,7 +41,6 @@ public class AMPartitioner <K> implements Partitioner<K> {
                 hlls[i] = new HLL(12,5);
                 targetTaskStats[i] = 0;
             }
-
 //            countWindow = 1000000;
 //            clearCount = 0;
 //

@@ -424,7 +424,6 @@ public class AdaptivePartitioner<K> implements Partitioner<K> {
         return targetTaskId;
     }
     class PartitionSorterByLoad<K> implements Comparator<K> {
-
         Map<K, Long> base;
         public PartitionSorterByLoad(Map<K, Long> base) {
             this.base = base;

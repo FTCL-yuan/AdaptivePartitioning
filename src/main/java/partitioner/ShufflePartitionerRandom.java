@@ -9,6 +9,5 @@ public class ShufflePartitionerRandom<K> implements Partitioner<K> {
     @Override
     public int partition(K k, int i) {
         return random.nextInt(i);
-        //return 0;
     }
 }

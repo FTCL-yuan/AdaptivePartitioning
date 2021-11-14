@@ -17,7 +17,6 @@ public class Config {
     public static long CACHE_INTERVAL;
     public static long CACHE_SIZE;
     public static long BUFFER_TIMEOUT;
-
     public static Integer SOURCE_PARALLELISM;
     public static Integer MAP_PARALLELISM;
     public static Integer PRE_REDUCE_PARALLELISM;

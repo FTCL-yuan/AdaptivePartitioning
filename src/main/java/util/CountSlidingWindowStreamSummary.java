@@ -11,9 +11,7 @@ public class CountSlidingWindowStreamSummary<T> {
     private long windowSize;
     private long usedSize;
     private int capacity;
-
     private int coDomain;
-
     private long[][] totalDistribution;
     private StreamSummary<T>[] totalStreamSummary;
     private long count;

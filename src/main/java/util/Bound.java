@@ -8,7 +8,7 @@ import java.util.Map;
 public class Bound <K> {
     private HashMap<K,Long> highFreqList;
     private double maxHighFreqKeyCount;
-    private double minHighFreqKeyCount;
+//    private double minHighFreqKeyCount;
     private double highFreqKeyTotalCount;
     private int instanceNum;
     private double maxImbalanceTheta;
@@ -160,7 +160,7 @@ public class Bound <K> {
                 minCount = tmpCount;
         }
         this.maxHighFreqKeyCount = maxCount;
-        this.minHighFreqKeyCount = minCount;
+//        this.minHighFreqKeyCount = minCount;
         this.highFreqKeyTotalCount = totalCount;
         long tmpTotalLoad = 0;
         long tmpTotalSplitLoad = 0;

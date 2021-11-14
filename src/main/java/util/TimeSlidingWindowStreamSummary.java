@@ -56,7 +56,6 @@ public class TimeSlidingWindowStreamSummary<T> {
         HashMap<T,Long> returnList = new HashMap<>();
         int windowCounter = usedWindow;
         List<Counter<T>> counters = totalStreamSummary[windowCounter].topK(this.capacity);
-
         for(Counter<T> counter : counters)  {
             Long count = counter.getCount();
             Long error = counter.getError();
@@ -65,10 +64,8 @@ public class TimeSlidingWindowStreamSummary<T> {
             if (itemProb > probability) {
                 returnList.put(counter.getItem(),freq);
             }
-
         }
         return returnList;
-
     }
 
     public double getTopKCount(double probability){

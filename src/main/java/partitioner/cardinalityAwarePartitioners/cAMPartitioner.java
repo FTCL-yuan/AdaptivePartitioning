@@ -16,7 +16,6 @@ public class cAMPartitioner <K> implements Partitioner<K> {
     transient HLL[] hlls;
     private int instanceNum = 0;
 
-
     long countWindow,timeWindow,clearCount,cleanTime;
     public cAMPartitioner(int choiceNumber){
         this.choiceNumber = choiceNumber;

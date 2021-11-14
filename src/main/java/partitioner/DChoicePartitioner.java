@@ -115,7 +115,6 @@ public class DChoicePartitioner implements Partitioner {
                         counter++;
                     }
                 }
-
                 int selected = selectMinChoice(targetTaskStats,choice);
                 returnId = selected;
                 //boltIds.add(targetTasks.get(selected));

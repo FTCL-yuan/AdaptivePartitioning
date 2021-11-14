@@ -22,7 +22,6 @@ public class StreamSummaryHelper<T> {
             }
         }
         return returnList;
-
     }
     public PHeadCount getPHead(StreamSummary<T> topk, double probability, Long totalItems) {
         PHeadCount returnValue = new PHeadCount();

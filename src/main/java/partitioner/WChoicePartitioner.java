@@ -19,10 +19,7 @@ public class WChoicePartitioner implements Partitioner {
     private HashFunction h1 = Hashing.murmur3_128(13);
     private HashFunction h2 = Hashing.murmur3_128(17);
     private StreamSummary<String> streamSummary;
-
-
     private long totalItems;
-
     private int currentTargetTaskNum = 0;
     @Override
     public int partition(Object key, int numPartitions) {

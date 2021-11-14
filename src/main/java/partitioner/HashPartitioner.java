@@ -12,8 +12,6 @@ public class HashPartitioner<K> implements Partitioner<K>{
     private int currentTargetTaskNum;
     private int instanceNum;
     private Seed seeds;
-    private  double[] targetTaskStats;
-    private int count;
     @Override
     public int partition(K key, int numPartitions) {
         if (currentTargetTaskNum != numPartitions) {
@@ -24,8 +22,6 @@ public class HashPartitioner<K> implements Partitioner<K>{
             for (int i = 0; i < hash.length; i++) {
                 hash[i] = Hashing.murmur3_128(seeds.SEEDS[i]);
             }
-            targetTaskStats = new double[currentTargetTaskNum];
-            count=0;
         }
         //System.out.println(Thread.currentThread().getId());
         byte[] raw = KeyTransformation.hashCodeGet(key);

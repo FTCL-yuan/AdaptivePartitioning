@@ -16,7 +16,6 @@ public class CMPartitioner<K> implements Partitioner<K> {
     transient HLL[] hlls;
     private int instanceNum = 0;
 
-
     private long countWindow,timeWindow,clearCount,cleanTime;
     public CMPartitioner(int choiceNumber){
         this.choiceNumber = choiceNumber;
